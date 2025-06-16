@@ -48,29 +48,27 @@
   <div class="question">
     <strong>Q:</strong> Which company is widely recognized as the world’s most valuable IT company by market capitalization (as of recent years)?
   </div>
-  <div class="option" onclick="checkAnswer(this, false)">A) Google (Alphabet Inc.)</div>
-  <div class="option" onclick="checkAnswer(this, false)">B) Microsoft</div>
-  <div class="option" onclick="checkAnswer(this, true)">C) Apple Inc.</div>
-  <div class="option" onclick="checkAnswer(this, false)">D) Amazon</div>
+  <div class="option" data-correct="false" onclick="checkAnswer(this)">A) Google (Alphabet Inc.)</div>
+  <div class="option" data-correct="false" onclick="checkAnswer(this)">B) Microsoft</div>
+  <div class="option" data-correct="true" onclick="checkAnswer(this)">C) Apple Inc.</div>
+  <div class="option" data-correct="false" onclick="checkAnswer(this)">D) Amazon</div>
 </div>
 
 <script>
-  function checkAnswer(element, isCorrect) {
+  function checkAnswer(selectedOption) {
     const options = document.querySelectorAll('.option');
+    const correctOption = Array.from(options).find(opt => opt.dataset.correct === "true");
+
+    // Disable further clicks
     options.forEach(opt => {
-      opt.style.pointerEvents = 'none'; // Disable further clicks
+      opt.style.pointerEvents = 'none';
     });
 
-    if (isCorrect) {
-      element.classList.add('correct');
+    if (selectedOption.dataset.correct === "true") {
+      selectedOption.classList.add('correct');
     } else {
-      element.classList.add('incorrect');
-      // Find and highlight the correct one
-      options.forEach(opt => {
-        if (opt.textContent.includes('C) Apple Inc.')) {
-          opt.classList.add('correct');
-        }
-      });
+      selectedOption.classList.add('incorrect');
+      correctOption.classList.add('correct'); // Also show correct one
     }
   }
 </script>
