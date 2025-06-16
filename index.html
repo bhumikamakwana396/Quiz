@@ -65,6 +65,12 @@
       element.classList.add('correct');
     } else {
       element.classList.add('incorrect');
+      // Find and highlight the correct one
+      options.forEach(opt => {
+        if (opt.textContent.includes('C) Apple Inc.')) {
+          opt.classList.add('correct');
+        }
+      });
     }
   }
 </script>
