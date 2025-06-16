@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Quiz</title>
+  <style>
+    .quiz-container {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .question {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .option {
+      padding: 12px;
+      margin: 10px 0;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .correct {
+      background-color: #d4edda;
+      border-color: #28a745;
+      color: #155724;
+    }
+
+    .incorrect {
+      background-color: #f8d7da;
+      border-color: #dc3545;
+      color: #721c24;
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-container">
+  <div class="question">
+    <strong>Q:</strong> Which company is widely recognized as the world’s most valuable IT company by market capitalization (as of recent years)?
+  </div>
+  <div class="option" onclick="checkAnswer(this, false)">A) Google (Alphabet Inc.)</div>
+  <div class="option" onclick="checkAnswer(this, false)">B) Microsoft</div>
+  <div class="option" onclick="checkAnswer(this, true)">C) Apple Inc.</div>
+  <div class="option" onclick="checkAnswer(this, false)">D) Amazon</div>
+</div>
+
+<script>
+  function checkAnswer(element, isCorrect) {
+    const options = document.querySelectorAll('.option');
+    options.forEach(opt => {
+      opt.style.pointerEvents = 'none'; // Disable further clicks
+    });
+
+    if (isCorrect) {
+      element.classList.add('correct');
+    } else {
+      element.classList.add('incorrect');
+    }
+  }
+</script>
+
+</body>
+</html>
